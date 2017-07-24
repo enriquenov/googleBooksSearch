@@ -11,12 +11,12 @@ $(document).ready(function()
         });
 
 
-        $('button#backBtn').hide();
+        $('button#backBtn1').hide();
 
-        $('button#backBtn').click(function(){
-          parent.history.back();
-          return false;
-        });
+        // $('button#backBtn').click(function(){
+        //   parent.history.back();
+        //   return false;
+        // });
 });
 
 
@@ -26,7 +26,8 @@ var searchBtn = document.getElementById('searchBtn');
 var input = document.getElementById('input');
 var results = document.getElementById('results');
 var searcher = document.getElementById('searcher');
-var backBtn = document.getElementById('backBtn');
+var backBtn1 = document.getElementById('backBtn1');
+
 
 searchBtn.addEventListener('click', function() {
   if (input.value === '') {
@@ -40,7 +41,7 @@ searchBtn.addEventListener('click', function() {
       success: function(data) {
         console.log(data);
         searcher.style.display = "none";
-        backBtn.style.display = "inline-block";
+        backBtn1.style.display = "inline-block";
 
         for (var i = 0; i < data.items.length; i++) {
           results.innerHTML += '<h1>' + data.items[i].volumeInfo.title + '</h1>';
@@ -48,21 +49,20 @@ searchBtn.addEventListener('click', function() {
           results.innerHTML += '<img src="' + data.items[i].volumeInfo.imageLinks.smallThumbnail + '">';
           results.innerHTML += '<p class="description">' + data.items[i].volumeInfo.description + '</p>';
           results.innerHTML += '<hr>';
-          // results.className = 'col-md-4';
+
         }
-        results.innerHTML += '<button type="button" class="btn btn-danger" id="backBtn">Back</button>';
+        // results.innerHTML += '<button type="button" class="btn btn-danger" id="backBtn2"></button>';
+        // var backBtn2 = document.getElementById('backBtn2');
       },
       type: 'GET'
     });
+    // backBtn2.addEventListener('click', goBack, false);
     input.value = '';
   }
 });
 
-
-function goBack() {
+backBtn1.addEventListener('click', function() {
+  console.log('yes');
+  searcher.style.display = 'block';
   results.innerHTML = '';
-  searcher.style.display = 'inline-block';
-}
-
-
-backBtn.addEventListener('click', goBack, false);
+}, false);
