@@ -59,10 +59,10 @@ searchBtn.addEventListener('click', function() {
 });
 
 
-// function goBack() {
-//   results.innerHTML = '';
-//   searcher.style.display = 'inline-block';
-// }
-//
-//
-// backBtn.addEventListener('click', goBack, false);
+function goBack() {
+  results.innerHTML = '';
+  searcher.style.display = 'inline-block';
+}
+
+
+backBtn.addEventListener('click', goBack, false);
